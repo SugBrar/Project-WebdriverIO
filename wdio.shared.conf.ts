@@ -47,13 +47,20 @@ export const config: WebdriverIO.Config = {
     //
     maxInstances: 10,
     //
+    capabilities: [
+        {
+            maxInstances: 5,
+            browserName: 'chrome',
+            acceptInsecureCerts: true
+        },
+    ],
     // ===================
     // Test Configurations
     // ===================
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'trace',
+    logLevel: 'info',
     outputDir: path.resolve(__dirname, 'logs'),
     //
     // Set specific log levels per logger
@@ -89,6 +96,8 @@ export const config: WebdriverIO.Config = {
     //
     // Default request retries count
     connectionRetryCount: 3,
+    // Test runner services:
+    services: ['chromedriver', 'geckodriver','edgedriver'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
